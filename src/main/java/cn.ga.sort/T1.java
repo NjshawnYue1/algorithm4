@@ -11,8 +11,9 @@ import java.util.Comparator;
  * 首先，找到数组中最小的那个元素，
  * 其次，将它和数组的第 一个元素交换位置(如果第一个元素就是最小元素那么它就和自己交换)。
  * 再次，在剩下的元素中 找到最小的元素，将它与数组的第二个元素交换位置。如此往复，直到将整个数组排序
- *
- * 无论需要排序的数组是否有序 都会被全部比较一遍 时间复杂度为n²
+ * <p>
+ * 稳定排序 排序后如果大小相同的数字次序不会改变
+ * 无论需要排序的数组是否有序 都会被全部比较一遍 时间复杂度为n² 所以数据越少越好
  */
 
 
@@ -25,9 +26,10 @@ public class T1 {
 
     private static void selectSort(int[] origin) {
         int temp;
+        if (origin.length == 1) return;
         for (int i = 0; i < origin.length; i++) {
             for (int j = i + 1; j < origin.length; j++) {
-                if(origin[i] > origin[j]){
+                if (origin[i] > origin[j]) {
                     temp = origin[i];
                     origin[i] = origin[j];
                     origin[j] = temp;
